@@ -44,7 +44,7 @@ function App() {
         <title>NarutoDB</title>
         <meta name="description" content="Naruto characters database" />
       </Helmet>
-      <div className="container">
+      <div flex className="container">
         <div className="header">
           <div className="header-content">
             <img src={logoImg} alt="logo" className="logo" />

@@ -1,10 +1,11 @@
-import { defineConfig, presetAttributify } from "unocss";
+import {
+  defineConfig,
+  presetAttributify,
+  presetUno,
+  transformerAttributifyJsx,
+} from "unocss";
 
 export default defineConfig({
-  presets: [
-    presetAttributify({
-      /* preset options */
-    }),
-    // ...
-  ],
+  presets: [presetAttributify(), presetUno()],
+  transformers: [transformerAttributifyJsx()],
 });
