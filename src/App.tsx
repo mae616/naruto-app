@@ -44,10 +44,30 @@ function App() {
         <title>NarutoDB</title>
         <meta name="description" content="Naruto characters database" />
       </Helmet>
-      <div flex className="container">
-        <div className="header">
-          <div className="header-content">
-            <img src={logoImg} alt="logo" className="logo" />
+      <div pt-0 className="container">
+        <div
+          flex
+          justify-between
+          items-center
+          p="y-[16px]"
+          bg="#bce2e8"
+          className="header"
+        >
+          <div
+            w-full
+            max-w="1280px"
+            m="x-auto"
+            text-left
+            className="header-content"
+          >
+            <img
+              m="r-[16p]"
+              w="100px"
+              h="50px"
+              src={logoImg}
+              alt="logo"
+              className="logo"
+            />
           </div>
         </div>
         <Loading isLoading={isLoading}>

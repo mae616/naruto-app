@@ -1,29 +1,29 @@
-.container {
+/* .container {
   padding-top: 0;
-}
+} */
 
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 16px;
   padding-bottom: 16px;
   background-color: #bce2e8;
-}
+} */
 
-.header-content {
+/* .header-content {
   width: 100%;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
-}
+} */
 
-.logo {
+/* .logo {
   margin-right: 16px;
   width: 100px;
   height: 50px;
-}
+} */
 
 main {
   margin-top: 16px;
