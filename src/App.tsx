@@ -1,11 +1,33 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import axios from "axios";
 import dummyImage from "./assets/dummy.png";
 import logoImg from "./assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import { Loading } from "./Loading";
 import { Character } from "./types";
+
+const pageButtonStyle = `
+  w-[125px]
+  mx-[10px]
+  py-2
+  px-4
+  text-white
+  bg-gray-800
+  border
+  border-solid
+  border-gray-800
+  rounded
+  cursor-pointer
+  transition-colors
+  ease-in-out
+  hover:duration-300
+  hover:bg-gray-700
+  hover:border-gray-800
+  disabled:text-gray-100
+  disabled:bg-gray-400
+  disabled:border-gray-400
+  disabled:cursor-default
+`;
 
 function App() {
   const limit = 15;
@@ -49,6 +71,7 @@ function App() {
           flex
           justify-between
           items-center
+          px-2
           p="y-[16px]"
           bg="#bce2e8"
           className="header"
@@ -61,7 +84,7 @@ function App() {
             className="header-content"
           >
             <img
-              m="r-[16p]"
+              m="r-[16px]"
               w="100px"
               h="50px"
               src={logoImg}
@@ -71,23 +94,53 @@ function App() {
           </div>
         </div>
         <Loading isLoading={isLoading}>
-          <main>
-            <div className="cards-container">
+          <main m="y-12 x-auto" px-2 max-w="1280px">
+            <div
+              grid
+              grid-cols-3
+              max-md:grid-cols-2
+              gap="16px"
+              className="cards-container"
+            >
               {characters.map((character) => {
                 return (
-                  <div className="card" key={character.id}>
+                  <div overflow-hidden className="card" key={character.id}>
                     <img
+                      rounded-lg
+                      w-full
+                      h="192px"
+                      max-md:h="150px"
+                      object-covers
                       src={character.images[0] ?? dummyImage}
                       alt={character.name}
                       className="card-image"
                     />
-                    <div className="card-content">
-                      <h3 className="card-title">{character.name}</h3>
-                      <p className="card-description">
+                    <div p-2 className="card-content">
+                      <h3
+                        m-0
+                        text-lg
+                        font-semibold
+                        max-md:text-base
+                        className="card-title"
+                      >
+                        {character.name}
+                      </h3>
+                      <p text-sm max-md:text-xs className="card-description">
                         {character.debut?.appearsIn ?? "なし"}
                       </p>
-                      <div className="card-footer">
-                        <span className="affiliation">
+                      <div
+                        flex
+                        justify-between
+                        items-center
+                        mt-2
+                        className="card-footer"
+                      >
+                        <span
+                          text-sm
+                          font-medium
+                          max-md:text-xs
+                          className="affiliation"
+                        >
                           {character.personal?.affiliation ?? " なし"}
                         </span>
                       </div>
@@ -96,18 +149,30 @@ function App() {
                 );
               })}
             </div>
-            <div className="pager">
+            <div
+              w-fit
+              mt-12
+              mx-auto
+              text-center
+              flex
+              items-baseline
+              gap-2
+              text-gray-800
+              className="pager"
+            >
               <button
                 disabled={page === 1}
-                className="prev"
+                className={`prev ${pageButtonStyle}`}
                 onClick={handlePrev}
               >
                 Previous
               </button>
-              <span className="page-number">{page}</span>
+              <span mx-2 text="1.1em" className="page-number">
+                {page}
+              </span>
               <button
                 disabled={limit > characters.length}
-                className="next"
+                className={`next ${pageButtonStyle}`}
                 onClick={handleNext}
               >
                 Next
