@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ogpImage from "./assets/ogp.png";
 import dummyImage from "./assets/dummy.png";
 import logoImg from "./assets/logo.png";
 import { Helmet } from "react-helmet-async";
@@ -63,8 +64,21 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>NarutoDB</title>
+        <title>Naruto App</title>
         <meta name="description" content="Naruto characters database" />
+        <meta property="og:title" content="Naruto App" />
+        <meta property="og:description" content="Narutoのキャラクタ一覧" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://mae616.github.io/naruto-app/"
+        />
+        <meta property="og:image" content={ogpImage} />
+        <meta property="og:site_name" content="Naruto App" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Naruto App" />
+        <meta name="twitter:description" content="Narutoのキャラクタ一覧" />
+        <meta name="twitter:image" content={ogpImage} />
       </Helmet>
       <div pt-0 className="container">
         <div
@@ -110,7 +124,7 @@ function App() {
                       w-full
                       h="192px"
                       max-md:h="150px"
-                      object-covers
+                      object-cover
                       src={character.images[0] ?? dummyImage}
                       alt={character.name}
                       className="card-image"
